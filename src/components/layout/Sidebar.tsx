@@ -1,4 +1,4 @@
-import { Circle, Divider, Flex, Stack, Text } from "@chakra-ui/react";
+import { Divider, Flex, Stack, Text } from "@chakra-ui/react";
 import {
   FiBell,
   FiHome,
@@ -8,8 +8,8 @@ import {
   FiTwitter,
 } from "react-icons/fi";
 import { NavButton } from "./NavButton";
-import { Link } from "react-router-dom";
 import { UserProfile } from "./UserProfile";
+import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
   return (
@@ -31,11 +31,8 @@ export const Sidebar = () => {
           <Stack spacing="1">
             <NavButton label="Home" icon={FiHome} to="/home" />
             <NavButton
-              label={"ok"}
+              label="Notifications"
               icon={FiBell}
-              endElement={
-                <Circle size="2" bg="blue.400"></Circle>
-              }
               to="/notifications"
             />
           </Stack>
@@ -53,12 +50,12 @@ export const Sidebar = () => {
             <NavButton label="Sign Out" icon={FiPower} to="/signout" />
           </Stack>
           <Divider borderColor="bg-accent-subtle" />
-          {/* <Link to={viewModel.authUser.profileUrl}> */}
+          <Link to={`/u/pierre`}>
             <UserProfile
-              username={"username"}
-              profilePicture={"ok"}
+              username={"Pierre"}
+              profilePicture={"https://picsum.photos/200?random=pierre"}
             />
-          {/* </Link> */}
+          </Link>
         </Stack>
       </Stack>
     </Flex>

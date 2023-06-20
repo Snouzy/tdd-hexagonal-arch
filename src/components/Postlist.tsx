@@ -13,7 +13,6 @@ export const PostList = ({
     publishedAt: string;
     text: string;
     userId: string;
-    errorMessage?: string;
   }[];
   addPostPlaceholder?: string;
 }) => {
@@ -21,9 +20,7 @@ export const PostList = ({
     <Center mx="auto" py={{ base: "4", md: "8" }}>
       <Box bg="bg-surface" py="4" width="full">
         <Stack divider={<StackDivider />} spacing="4">
-          <AddPostForm
-            placeholder={addPostPlaceholder}
-          />
+          <AddPostForm placeholder={addPostPlaceholder} />
           {messages.map((msg) => (
             <Post key={msg.id} {...msg} />
           ))}
