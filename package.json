@@ -10,8 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@total-typescript/ts-reset": "^0.4.2",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
+    "react-router-dom": "^6.13.0",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
