@@ -1,12 +1,14 @@
 export interface GetUserTimelineResponse {
-    timeline: {
-        user: string;
+  timeline: {
+    id: string;
+    user: string;
     messages: {
-        text: string;
-        author: string;
-        publishedAt: string;       
+      id: string;
+      text: string;
+      author: string;
+      publishedAt: string;
     }[];
-}
+  };
 }
         
 export interface TimelineGateway {

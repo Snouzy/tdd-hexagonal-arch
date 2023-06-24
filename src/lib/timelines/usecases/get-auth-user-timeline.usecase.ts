@@ -1,6 +1,4 @@
 import { createAppAsyncThunk } from "@/lib/create-app-thunk";
-import { timelineGateway } from "../infra/fake-timeline.gateway";
-import { authGateway } from "@/lib/auth/infra/fake-auth.gateway";
 
 export const getAuthUserTimeline = createAppAsyncThunk(
   "timelines/getAuthUserTimeline",

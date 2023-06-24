@@ -1,5 +1,5 @@
 import { AnyAction, ThunkDispatch, configureStore } from "@reduxjs/toolkit";
-import { timelinesSlice } from "./timelines/slices/timelines.slice";
+import { reducer as timelinesReducer } from "./timelines/reducer";
 import { AuthGateway } from "./auth/infra/fake-auth.gateway";
 import { TimelineGateway } from "./timelines/model/timeline.gateway";
 
@@ -19,11 +19,11 @@ export interface Dependencies {
   timelineGateway: TimelineGateway;
 }
 
-const rootReducer = timelinesSlice.reducer;
+const rootReducer = timelinesReducer;
 
 export const createStore = (dependencies: Dependencies) =>
   configureStore({
-    reducer: timelinesSlice.reducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
