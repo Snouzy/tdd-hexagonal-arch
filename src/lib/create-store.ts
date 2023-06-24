@@ -1,7 +1,8 @@
 import { AnyAction, ThunkDispatch, configureStore } from "@reduxjs/toolkit";
 import { reducer as timelinesReducer } from "./timelines/reducer";
-import { AuthGateway } from "./auth/infra/fake-auth.gateway";
+import { AuthGateway, FakeAuthGateway } from "./auth/infra/fake-auth.gateway";
 import { TimelineGateway } from "./timelines/model/timeline.gateway";
+import { FakeTimelineGateway } from "./timelines/infra/fake-timeline.gateway";
 
 // export const store = configureStore({
 //     reducer: timelineSlice.reducer,
@@ -21,7 +22,10 @@ export interface Dependencies {
 
 const rootReducer = timelinesReducer;
 
-export const createStore = (dependencies: Dependencies) =>
+export const createStore = (
+  dependencies: Dependencies,
+  preloadedState?: Partial<ReturnType<typeof rootReducer>>
+) =>
   configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
@@ -30,7 +34,23 @@ export const createStore = (dependencies: Dependencies) =>
           extraArgument: dependencies,
         },
       }),
+    preloadedState,
   });
+
+export const createTestStore = (
+  {
+    authGateway = new FakeAuthGateway(),
+    timelineGateway = new FakeTimelineGateway(),
+  }: Partial<Dependencies> = {},
+  preloadedState?: Partial<ReturnType<typeof rootReducer>>
+) =>
+  createStore(
+    {
+      authGateway,
+      timelineGateway,
+    },
+    preloadedState
+  );
 
 export type AppStore = ReturnType<typeof createStore>;
 export type RootState = ReturnType<typeof rootReducer>;
