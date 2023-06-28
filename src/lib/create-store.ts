@@ -3,6 +3,7 @@ import { reducer as timelinesReducer } from "./timelines/reducer";
 import { AuthGateway, FakeAuthGateway } from "./auth/infra/fake-auth.gateway";
 import { TimelineGateway } from "./timelines/model/timeline.gateway";
 import { FakeTimelineGateway } from "./timelines/infra/fake-timeline.gateway";
+import { rootReducer } from "./root-reducer";
 
 // export const store = configureStore({
 //     reducer: timelineSlice.reducer,
@@ -19,8 +20,6 @@ export interface Dependencies {
   authGateway: AuthGateway;
   timelineGateway: TimelineGateway;
 }
-
-const rootReducer = timelinesReducer;
 
 export const createStore = (
   dependencies: Dependencies,

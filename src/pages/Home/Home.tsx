@@ -20,11 +20,14 @@ export const Home = () => {
         return <TimelineDivider text="No timeline" />;
 
       case HomeViewModelType.EMPTY_TIMELINE:
-        return <Text></Text>;
+        return <Text>{viewModel.timeline.info}</Text>;
 
       case HomeViewModelType.TIMELINE_WITH_MESSAGES:
         const messages = viewModel.timeline.messages;
         return <PostList messages={viewModel.timeline.messages} />;
+
+      case HomeViewModelType.LOADING_TIMELINE:
+        return <Text>{viewModel.timeline.info}</Text>;
 
       default:
         return exhaustiveGuard(viewModel.timeline);
